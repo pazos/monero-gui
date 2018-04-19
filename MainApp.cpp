@@ -12,3 +12,8 @@ bool MainApp::event (QEvent *event)
 
     return false;
 }
+
+void AboutQtDialog::aboutQt()
+{
+    QApplication::aboutQt();
+}

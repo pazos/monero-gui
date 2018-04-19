@@ -42,6 +42,7 @@ Rectangle {
     id: page
 
     color: "transparent"
+    property var qtDialog: aboutQt
 
     // fires on every page load
     function onPageCompleted() {
@@ -624,7 +625,11 @@ Rectangle {
             Layout.topMargin: 8
             font.pixelSize: 14
             Layout.fillWidth: true
-            text: qsTr("GUI version: ") + Version.GUI_VERSION + " (Qt " + qtRuntimeVersion + ")" + translationManager.emptyString
+            textFormat: Text.RichText
+            property var txt: "<style type='text/css'>a {text-decoration:none; color: #FF6C3C}</style>"
+            property var linkTxt: " (<a href='#'>Qt " + qtRuntimeVersion + "</a>)"
+            text: qsTr("GUI version: ") + Version.GUI_VERSION + txt + linkTxt + translationManager.emptyString
+            onLinkActivated: qtDialog.aboutQt()
         }
         TextBlock {
             id: guiMoneroVersion

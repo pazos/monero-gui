@@ -175,6 +175,9 @@ int main(int argc, char *argv[])
 
     engine.rootContext()->setContextProperty("qtRuntimeVersion", qVersion());
 
+    AboutQtDialog aboutQt;
+    engine.rootContext()->setContextProperty("aboutQt", &aboutQt);
+
 // Exclude daemon manager from IOS
 #ifndef Q_OS_IOS
     DaemonManager * daemonManager = DaemonManager::instance(&arguments);
