@@ -1,0 +1,12 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Encoding=UTF-8
+Name=monero
+Comment=Wallet GUI for the monero p2p network
+Type=Application
+Terminal=false
+Exec=monero-wallet-gui
+Icon=monero128
+Categories=Office;Finance;
+#MimeType=x-scheme-handler/monero;
+

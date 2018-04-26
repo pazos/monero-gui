@@ -439,5 +439,9 @@ DISTFILES += \
 # windows application icon
 RC_FILE = monero-core.rc
 
-# mac application icon
-ICON = $$PWD/images/appicon.icns
+# mac Info.plist & application icon
+
+macx {
+    QMAKE_INFO_PLIST = $$PWD/share/macos_Info.plist
+    ICON = $$PWD/images/appicon.icns
+}
