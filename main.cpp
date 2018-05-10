@@ -35,6 +35,8 @@
 #include <QObject>
 #include <QDesktopWidget>
 #include <QScreen>
+#include <QMenuBar>
+#include <QMessageBox>
 #include "clipboardAdapter.h"
 #include "filter.h"
 #include "oscursor.h"
@@ -109,8 +111,15 @@ int main(int argc, char *argv[])
     app.setOrganizationDomain("getmonero.org");
     app.setOrganizationName("monero-project");
 
-#if defined(Q_OS_LINUX)
+#ifdef Q_OS_LINUX
     if (isDesktop) app.setWindowIcon(QIcon(":/images/appicon.ico"));
+#endif
+
+#ifdef Q_OS_MAC
+    QMenuBar *menu = new QMenuBar(0);
+    QMenu *about = menu->addMenu("&About");
+    QAction *about_qt =  new QAction("&About Qt");
+    QObject::connect(about_qt, &QAction::triggered, qApp, QApplication::aboutQt);
 #endif
 
     filter *eventFilter = new filter;
