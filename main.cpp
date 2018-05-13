@@ -54,6 +54,7 @@
 #include "Subaddress.h"
 #include "model/SubaddressModel.h"
 #include "wallet/api/wallet2_api.h"
+#include "URIHandler.h"
 #include "MainApp.h"
 
 // IOS exclusions
@@ -104,6 +105,18 @@ int main(int argc, char *argv[])
 //#endif
 
     MainApp app(argc, argv);
+
+    static const QString full_name = "org.monero-project.monero-gui";
+
+    URIHandler uriHandler;
+
+    if (uriHandler.hasURI(full_name, app.arguments()))
+    {
+        qWarning().noquote() << "sending monero URI to a running instance";
+        return 0;
+    }
+
+    uriHandler.listen(full_name);
 
     app.setApplicationName("monero-gui");
     app.setOrganizationDomain("getmonero.org");
